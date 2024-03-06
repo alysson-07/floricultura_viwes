@@ -15,12 +15,6 @@ app.get('/dados_compras_com_entrega', (req, res) => {
 
         const query = "SELECT * FROM ComprasComEntregaView;";
         db.all(query, [], (err, rows) => {
-            if (err) {
-                console.error(err.message);
-                res.status(500).json({ error: 'Erro ao executar a consulta no banco de dados.' });
-                return;
-            }
-
           
             const dados_json = Array.isArray(rows) ? rows.map(dado => ({
                 id_compra: dado.id_compra,
